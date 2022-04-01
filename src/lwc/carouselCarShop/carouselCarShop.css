@@ -1,0 +1,9 @@
+lightning-carousel {
+    margin: 20px;
+    padding: 20px;
+}
+
+lightning-carousel-image {
+    max-height: 80%;
+    min-height: 10%;
+}

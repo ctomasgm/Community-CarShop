@@ -1,0 +1,52 @@
+<template>
+    <!-- Create Product2 item page -->
+    <lightning-card>
+        <lightning-layout>
+            <lightning-layout-item size="6">
+
+                <!-- Text input for product2 name -->
+                <lightning-input class="slds-p-horizontal_medium" type="text" label="Product Name"
+                    placeholder="Type name here..." value={productName} onchange={handleNameChange} required="true">
+                </lightning-input>
+
+                <!-- Picklist input for product2 brand__c -->
+                <lightning-combobox class="slds-p-horizontal_medium" name="brand" label="Brand" value={brandValue}
+                    placeholder="Select a car brand" options={brandOptions} onchange={handleBrandChange}
+                    required="true">
+                </lightning-combobox>
+
+                <!-- Picklist input for product2 model__c -->
+                <lightning-combobox class="slds-p-horizontal_medium" name="model" label="Model" value={modelValue}
+                    placeholder="Select a car model" options={modelOptions} onchange={handleModelChange}
+                    required="true">
+                </lightning-combobox>
+
+                <!-- Picklist input for product2 color__c -->
+                <lightning-combobox class="slds-p-horizontal_medium" name="color" label="Color" value={colorValue}
+                    placeholder="Select a car color" options={colorOptions} onchange={handleColorChange}
+                    required="true">
+                </lightning-combobox>
+
+                <!-- Checkbox input for product2 isActive -->
+                <lightning-input class="slds-p-horizontal_medium" type="checkbox" label="Active" name="IsActive"
+                    onchange={handleIsActiveOnChange} value={isActive}></lightning-input>
+
+                <!-- Number input for PriceBookEntry price -->
+                <lightning-input class="slds-p-horizontal_medium" type="number" label="Price" step=".1"
+                    formatter="currency" value={price} min="0" onchange={handlePriceOnChange}></lightning-input>
+
+                <!-- File input for Product2 attachment Photo -->
+                <lightning-input class="slds-p-horizontal_medium" type="file" label="Product photo"
+                    onchange={handleFilesChange}></lightning-input>
+                <div class="slds-text-body_small slds-p-horizontal_medium">
+                    {fileName}
+                </div>
+                <br />
+                <!-- Button to submit and Create Product2 and PriceBookEntry items -->
+                <lightning-button class="slds-m-left_x-small" label="Create Product" variant="brand"
+                    onclick={createProduct} disabled={button_disabled}></lightning-button>
+            </lightning-layout-item>
+
+        </lightning-layout>
+    </lightning-card>
+</template>

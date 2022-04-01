@@ -1,0 +1,36 @@
+<template>
+    <lightning-card>
+        <!-- Web to Lead Template Modified with Lightning input for Style -->
+        <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST"
+            class="slds-var-p-around_medium">
+
+            <input type=hidden name="oid" value="00D5f000006Nybi">
+            <input type=hidden name="retURL" value="https://ctomasgm-developer-edition.na163.force.com/CarShop/s/">
+            <!-- Inputs Hidden to identify the Lead Source -->
+            <input id="lead_source" name="lead_source" type="hidden" value="Web" />
+            <input id="Description" type=hidden name="description" value="CarShop Lead">
+
+            <lightning-input id="first_name" maxlength="40" name="first_name" type="text" label="First Name"
+                required="true">
+            </lightning-input>
+
+            <lightning-input id="last_name" maxlength="80" name="last_name" type="text" label="Last Name"
+                required="true">
+            </lightning-input>
+
+            <lightning-input id="email" maxlength="80" name="email" type="email" label="Email" required="true">
+            </lightning-input>
+
+            <lightning-input id="company" maxlength="40" name="company" type="text" label="Company" required="true">
+            </lightning-input>
+
+            <lightning-input id="city" maxlength="40" name="city" type="text" label="City">
+            </lightning-input>
+
+            <lightning-input id="state" maxlength="20" name="state" type="text" label="State/Province">
+            </lightning-input>
+
+            <button type="submit" name="submit" class="slds-button slds-button_brand slds-button_stretch">Send</button>
+        </form>
+    </lightning-card>
+</template>

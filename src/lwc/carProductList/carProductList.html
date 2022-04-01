@@ -1,0 +1,69 @@
+<template>
+  <!-- Picklist input for Product2 Model__c -->
+  <lightning-combobox name="model" label="Model" value={modelValue} placeholder="Select a car model"
+    options={modelOptions} onchange={handleModelChange} class="slds-m-horizontal_x-small"></lightning-combobox>
+
+  <!-- Picklist input for Product2 Brand__c -->
+  <lightning-combobox name="brand" label="Brand" value={brandValue} placeholder="Select a car brand"
+    options={brandOptions} onchange={handleBrandChange} class="slds-m-horizontal_x-small"></lightning-combobox>
+  <!-- Div to align the buttons in a row -->
+  <div class="slds-grid slds-wrap">
+    <!-- Button to clear filters (Product2 Model__c and Brand__c) -->
+    <div class="slds-col slds-size_1-of-12">
+      <lightning-button variant="Neutral" label="Clear Filters" title="Clear all filters" onclick={handleFiltersClear}
+        class="slds-m-horizontal_x-small"></lightning-button>
+    </div>
+
+    <!-- Template that renders if the User is Logged -->
+    <template if:false={isGuestUser}>
+      <!-- Button to create new Product2 with its pricebookEntry and Asset photo -->
+      <div class="slds-col slds-size_1-of-12">
+        <lightning-button variant="brand" label="New" title="New product" onclick={openCreateProductModal}
+          class="slds-m-horizontal_x-small"></lightning-button>
+      </div>
+      <!-- Toggle that alternates edit mode making some fields editable and showing all product2 with product family eq 'Transport' -->
+      <div class="slds-col slds-size_1-of-12">
+        <lightning-input type="toggle" label="Edit mode" name="editMode" value={isEditMode}
+          onchange={handleEditModeChange}></lightning-input>
+      </div>
+    </template>
+
+  </div>
+  <!-- Simple spacer Div -->
+  <div class="slds-m-vertical_large"></div>
+
+  <!-- Template that renders if there is at least 1 product with Product Family eq 'Transport' -->
+  <template if:true={products}>
+    <!-- Custom DataTable that iterates active Product2 items with Product Family eq 'Transport'  -->
+    <c-codex-data-table key-field="Id" data={products} columns={columns} show-row-number-column hide-checkbox-column
+      column-widths-mode="fixed" onsave={handleSave}>
+    </c-codex-data-table>
+  </template>
+
+  <!-- Window that opens a LWC to create new Product2, opens when Click in 'New' Button -->
+  <template if:true={isCreateProductModalOpen}>
+    <section role="dialog" tabindex="-1" aria-labelledby="create-product-modal" aria-modal="true"
+      aria-describedby="modal-content" class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+        <header class="slds-modal__header">
+          <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+            onclick={closeCreateProductModal}>
+            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small">
+            </lightning-icon>
+            <span class="slds-assistive-text">Close</span>
+          </button>
+          <h2 id="create-product-modal" class="slds-text-heading_medium slds-hyphenate">Create New Product</h2>
+        </header>
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content">
+          <!-- Custom LWC that creates the product -->
+          <c-create-product></c-create-product>
+        </div>
+        <footer class="slds-modal__footer">
+          <button class="slds-button slds-button_neutral" onclick={closeCreateProductModal}
+            title="Cancel">Cancel</button>
+        </footer>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+</template>

@@ -1,0 +1,41 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <!-- This div helps to make the Carousel smaller and centered-->
+        <div class="slds-col slds-size_1-of-4"></div>
+
+        <!-- Begin of Container Div With Carousel -->
+        <div class="slds-col slds-size_2-of-4">
+
+            <lightning-carousel>
+                <!-- Carousel Item 1 -->
+                <lightning-carousel-image src={carItem1.DisplayUrl} header={carItem1.Name}
+                    description={carItem1.Description} alternative-text="First card accessible description."
+                    href="javascript:void(0);">
+                </lightning-carousel-image>
+
+                <!-- Carousel Item 2 -->
+                <lightning-carousel-image src={carItem2.DisplayUrl} header={carItem2.Name}
+                    description={carItem2.Description} alternative-text="Second card accessible description."
+                    href="javascript:void(0);">
+                </lightning-carousel-image>
+
+                <!-- Carousel Item 3 -->
+                <lightning-carousel-image src={carItem3.DisplayUrl} header={carItem3.Name}
+                    description={carItem3.Description} alternative-text="Third card accessible description."
+                    href="javascript:void(0);">
+                </lightning-carousel-image>
+
+                <!-- Carousel Item 4 -->
+                <lightning-carousel-image src={carItem4.DisplayUrl} header={carItem4.Name}
+                    description={carItem4.Description} alternative-text="Fourth card accessible description."
+                    href="javascript:void(0);">
+                </lightning-carousel-image>
+            </lightning-carousel>
+            <!-- End of Container Div for Carousel -->
+        </div>
+
+        <!-- This div helps to make the Carousel smaller and centered-->
+        <div class="slds-col slds-size_1-of-4"></div>
+    </div>
+
+</template>

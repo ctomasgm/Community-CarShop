@@ -1,0 +1,48 @@
+<template>
+    <lightning-card>
+
+        <!-- Picklist input for Product2 Model__c -->
+        <lightning-combobox name="model" label="Model" value={modelValue} placeholder="Select a car model"
+            options={modelOptions} onchange={handleModelChange} class="slds-m-horizontal_x-small">
+        </lightning-combobox>
+
+        <!-- Numeric Input for the Total Amount -->
+        <lightning-input type="number" label="Amount" step=".01" formatter="currency" value={amount} min={downPayment}
+            onchange={handleAmountOnChange} class="slds-m-horizontal_x-small">
+        </lightning-input>
+
+        <!-- Numeric Input for the Down Payment -->
+        <lightning-input type="number" label="Down Payment" step=".01" formatter="currency" value={downPayment} min="0"
+            max={amount} onchange={handleDownPaymentOnChange} class="slds-m-horizontal_x-small"></lightning-input>
+
+        <!-- Picklist input for the term (months) -->
+        <lightning-combobox name="term" label="Term" value={termValue} placeholder="Select a term" options={termOptions}
+            onchange={handleTermChange} class="slds-m-horizontal_x-small">
+        </lightning-combobox>
+
+        <!-- Button to calculate the table data -->
+        <lightning-button variant="brand" label="Calculate" title="Calculate" onclick={handleCalculate}
+            class="slds-m-horizontal_x-small" disabled={calculate_disabled}></lightning-button>
+
+        <!-- Button that downloads a CSV File with the table data -->
+        <lightning-button variant="Neutral" label="Download CSV" title="Download Simulation csv"
+            onclick={handleDownloadCSV} class="slds-m-horizontal_x-small" disabled={download_disabled}>
+        </lightning-button>
+
+        <!-- Button that downloads a PDF File with the table data -->
+        <lightning-button variant="Neutral" label="Download PDF" title="Download Simulation pdf"
+            onclick={handleDownloadPDF} class="slds-m-horizontal_x-small" disabled={download_disabled}>
+        </lightning-button>
+
+        <!-- Simple div for Spacing -->
+        <div class="slds-m-vertical_large"></div>
+
+        <!-- Template that renders a Table if there is any data, the data will populate the table when clicking in Calculate Button -->
+        <template if:true={payments}>
+            <c-codex-data-table key-field="id" data={payments} show-row-number-column="false"
+                hide-checkbox-column="false" columns={columns}>
+            </c-codex-data-table>
+        </template>
+    </lightning-card>
+
+</template>

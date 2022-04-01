@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Car Shop">
+        <!-- TopNav for CarShop Community -->
+        <div class="topnav">
+            <a class="active" href="/CarShop/s/">Home</a>
+            <a class="inactive" href="/CarShop/s/productlist">Cars/Models</a>
+            <a class="inactive" href="/CarShop/s/appointments">Appointments</a>
+            <a class="inactive" href="/CarShop/s/simulator">Simulator</a>
+            <template if:false={isGuest}>
+                <a class="inactive" href={logoutUrl}>Exit</a>
+            </template>
+            <template if:true={isGuest}>
+                <a class="inactive" href="/CarShop/s/login">Login</a>
+            </template>
+        </div>
+    </lightning-card>
+</template>
